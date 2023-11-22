@@ -110,7 +110,8 @@ describe('OrderRepository', () => {
     const newCustomer = new Customer('Customer2', 'Customer 2', new Address('Street 1', '1', 'City 1', 'SP', '00000-000'))
     await customerRepository.create(newCustomer);
 
-    orderRepository.update(new Order('Order1', newCustomer.id, [orderItem]));
+    orderRepository.update(new Order('Order1', newCustomer.id, [orderItem])); // update order chamado aqui
+
     const updatedOrder = await OrderModel.findOne({ where: { id: order.id }, include: [OrderItemModel] });
     expect(updatedOrder.customerId).toBe('Customer2');
 

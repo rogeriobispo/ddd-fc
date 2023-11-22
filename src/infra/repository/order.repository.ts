@@ -18,7 +18,7 @@ export default class OrderRepository implements OrderRepositoryInterface {
       })
   }
 
-  update(entity: Order): Promise<void> {
+  async update(entity: Order): Promise<void> {
     const order = this.findById(entity.id);
     if (!order) throw new Error('Order not found');
 
